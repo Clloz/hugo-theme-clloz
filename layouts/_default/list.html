@@ -1,8 +1,14 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
-  {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-    {{ .Summary }}
-  {{ end }}
+
+<section>
+    <h1>{{ .Title }}</h1>
+    {{ range .Pages.ByPublishDate.Reverse }}
+    <div class="card">
+        <a href="{{ .RelPermalink }}" class="page-link"></a>
+    </div>
+    <a href="{{ .RelPermalink }}" class="summary">
+        <p>{{ .Summary }}</p>
+    </a>
+    {{ end }}
+</section>
 {{ end }}
